@@ -7,6 +7,8 @@ export default function AssemblyEndgame()
   const alphabet="abcdefghijklmnopqrstuvwxyz";
   const [currentWord,setCurrentWord]=useState("REACT");
   const [guessedLetters,setGuessedLetters]=useState("");
+  const wrongGuessedCount=
+  guessedLetters.filter(letter=>!currentWord.includes(letter)).length;
   const languageElements=languages.map(lang=>{
     const styles={
       backgroundColor:lang.backgroundColor,
