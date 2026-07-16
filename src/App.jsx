@@ -39,6 +39,31 @@ export default function AssemblyEndgame() {
     const isGameLost=wrongGuessedCount>=languages.length-1;
     const isGameOver=isGameWon||isGameLost;
 
+    function renderGameStatus(){
+      if(!isGameOver)
+      {
+        return null;
+      }
+      if(isGameWon)
+      {
+        return(
+          <>
+           <h2>You Win</h2>
+           <p>Well done!</p>
+         </>
+        )
+      }
+      else
+      {
+        return(
+          <>
+             <h2>Game Over!</h2>
+             <p>You Lose!Better start learning Assembly</p>
+          </>
+        )
+      }
+    }
+
     const className = clsx({
       correct: isCorrect,
       wrong: isWrong,
@@ -87,19 +112,7 @@ export default function AssemblyEndgame() {
       </header>
 
       <section className={gameStatusClass}>
-       {isGameOver?(
-        isGameWon?(
-          <>
-           <h2>You Win</h2>
-           <p>Well done!</p>
-         </>
-        ) :( <>
-             <h2>Game Over!</h2>
-             <p>You Lose!Better start learning Assembly</p>
-             </> )
-                    ) : ( null )
-       }
-         
+       {renderGameStatus()}    
       </section>
 
       <section className="language-chips">
