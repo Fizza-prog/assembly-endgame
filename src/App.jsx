@@ -90,13 +90,17 @@ export default function AssemblyEndgame() {
     );
   });
 
-  const letterElements = currentWord.split("").map((letter, index) => (
-    <span key={index}>
-      {guessedLetters.includes(letter.toLowerCase())
-        ? letter.toUpperCase()
-        : ""}
-    </span>
-  ));
+  const letterElements = currentWord.split("").map((letter, index) => {
+    const shouldRevealLetter=isGameLost || uessedLetters.includes(letter);
+    const letterClassName=clsx(
+      isGameLost && !guessedLetters.includes(letter)&&"missed-letter"
+    )
+    return( 
+    <span key={index} className={letterClassName}>
+      {shouldRevealLetter?letter.toUpperCase():""}
+    </span>)
+  }
+  
 
   function addGuessedLetter(letter) {
     setGuessedLetters(prevLetters =>
