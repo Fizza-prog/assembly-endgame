@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { languages } from "./languages.js";
 import { clsx } from "clsx";
 import { getFarewellText,getRandomWord } from "./utils.js";
+import Confetti from "react-confetti"
 
 export default function AssemblyEndgame() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -124,6 +125,11 @@ export default function AssemblyEndgame() {
 
   return (
     <main>
+      {
+        isGameWon && <Confetti
+        recycle={false}
+        numberOfPieces={1000}/>
+      }
       <header>
         <h1>Assembly: Endgame</h1>
         <p>
