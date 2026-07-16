@@ -8,13 +8,17 @@ export default function AssemblyEndgame()
 {
   const alphabet="abcdefghijklmnopqrstuvwxyz";
   const [currentWord,setCurrentWord]=useState("REACT");
+  const [guessedLetters,setGuessedLetters]=useState("");
   const languageElements=languages.map(lang=>{
     const styles={
       backgroundColor:lang.backgroundColor,
       color:lang.color,
     }
     const keyboardElements=aplhabet.split("").map(letter=>(
-      <button key={key}>{letter.toUpperCase()}</button>
+      <button key={letter} 
+      onClick={()=>addGuessedLetter(letter)}>
+        {letter.toUpperCase()}
+        </button>
     ))
     return(
     <span 
@@ -26,6 +30,15 @@ export default function AssemblyEndgame()
   const letterElements=currentWord.split("").map((letter,index)=>
     (<span key={index}>{letter.toUpperCase()}</span>)
   )
+  function addGuessedLetter(letter)
+  {
+       setGuessedLetters(prevLetters=>
+       prevLetters.includes(letter)?
+       prevLetters:[...prevLetters,letter])
+  }
+
+
+
   return(
     <main>
       <header>
