@@ -35,6 +35,9 @@ export default function AssemblyEndgame() {
     const isGuessed = guessedLetters.includes(letter);
     const isCorrect = isGuessed && currentWord.includes(letter);
     const isWrong = isGuessed && !currentWord.includes(letter);
+    const isGameWon=currentWord.split("").every(letter=>guessedLetters.includes(letter));
+    const isGameLost=wrongGuessedCount>=languages.length-1;
+    const isGameOver=isGameWon||isGameLost;
 
     const className = clsx({
       correct: isCorrect,
@@ -94,6 +97,7 @@ export default function AssemblyEndgame() {
       <section className="keyboard">
         {keyboardElements}
       </section>
+      {isGameOver && <button className="new-game">New Game</button>}
     </main>
   );
 }
