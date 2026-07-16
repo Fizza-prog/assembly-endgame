@@ -1,8 +1,6 @@
 import React from "react"
 import {languages} from "./languages.js"
-
-
-
+import {clsx} from "clsx"
 
 export default function AssemblyEndgame()
 {
@@ -14,12 +12,22 @@ export default function AssemblyEndgame()
       backgroundColor:lang.backgroundColor,
       color:lang.color,
     }
-    const keyboardElements=aplhabet.split("").map(letter=>(
-      <button key={letter} 
-      onClick={()=>addGuessedLetter(letter)}>
+      const keyboardElements=aplhabet.split("").map(letter=>{
+      const isGuessed=guessedLetters.includes(letter);
+      const isCorrect=isGuessed && currentWord.includes(letter);
+      const isWrong=!isGuessed && currentWord.includes(letter);
+      const className=clsx({
+        correct:isCorrect,
+        wrong:isWrong,
+      });
+      return(<button 
+        className={}
+        key={letter} 
+        onClick={()=>addGuessedLetter(letter)}>
         {letter.toUpperCase()}
-        </button>
-    ))
+        </button>)
+    }
+    )
     return(
     <span 
     key={lang.name}
