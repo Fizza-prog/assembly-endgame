@@ -6,12 +6,16 @@ import {languages} from "./languages.js"
 
 export default function AssemblyEndgame()
 {
+  const alphabet="abcdefghijklmnopqrstuvwxyz";
   const [currentWord,setCurrentWord]=useState("REACT");
   const languageElements=languages.map(lang=>{
     const styles={
       backgroundColor:lang.backgroundColor,
       color:lang.color,
     }
+    const keyboardElements=aplhabet.split("").map(letter=>(
+      <button key={key}>{letter.toUpperCase()}</button>
+    ))
     return(
     <span 
     key={lang.name}
@@ -39,6 +43,9 @@ export default function AssemblyEndgame()
         </section>
         <section className="word">
            {letterElements}
+        </section>
+        <section className="keyboard">
+            {keyboardElements}
         </section>
 
       </section>

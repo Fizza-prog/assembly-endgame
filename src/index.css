@@ -67,6 +67,7 @@ section.word{
   display:flex;
   justify-content:center;
   gap:2px;
+  margin-bottom:20px;
 }
 
 section.word>span{
@@ -78,5 +79,21 @@ section.word>span{
   align-items:center;
   font-size:1.125rem;
   border-bottom:1px solid #F9F4DA;
+}
 
+section.keyboard{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+  max-width:450px;
+}
+
+section.keyboard>button{
+  height:35px;
+  width:35px;
+  background-color:#FCBA29;
+  border:1px solid #D7D7D7;
+  cursor:pointer;
+  border-radius:3px;
 }
