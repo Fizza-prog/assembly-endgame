@@ -21,7 +21,7 @@ export default function AssemblyEndgame()
         wrong:isWrong,
       });
       return(<button 
-        className={}
+        className={className}
         key={letter} 
         onClick={()=>addGuessedLetter(letter)}>
         {letter.toUpperCase()}
