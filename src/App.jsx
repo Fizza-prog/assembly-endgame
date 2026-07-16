@@ -18,10 +18,11 @@ export default function AssemblyEndgame() {
       backgroundColor: lang.backgroundColor,
       color: lang.color,
     };
+    const className=clsx("chip",isLanguageLost&&"lost")
 
     return (
       <span
-        className={`chip ${isLanguageLost ? "lost" : ""}`}
+        className={className}
         style={styles}
         key={lang.name}
       >
