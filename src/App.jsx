@@ -71,6 +71,11 @@ export default function AssemblyEndgame() {
     );
   }
 
+  const gameStatusClass=clsx("game-status",{
+    won:isGameWon,
+    lost:isGameLost,
+  })
+
   return (
     <main>
       <header>
@@ -81,7 +86,7 @@ export default function AssemblyEndgame() {
         </p>
       </header>
 
-      <section className="game-status">
+      <section className={gameStatusClass}>
        {isGameOver?(
         isGameWon?(
           <>
