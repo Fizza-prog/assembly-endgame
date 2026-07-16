@@ -125,3 +125,7 @@ section.game-status>p.farewell-msg{
   font-style:italic;
   font-weight:400;
 }
+section.keyboard>button:disabled{
+  cursor:not-allowed;
+  opacity: 0.5;
+}
