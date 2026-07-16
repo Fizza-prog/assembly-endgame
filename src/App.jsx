@@ -79,6 +79,8 @@ export default function AssemblyEndgame() {
     return (
       <button
       disabled={isGameOver}
+      aria-disabled={guessedLetters.includes(letter)}
+      aria-label={`Letter ${letter}`}
         className={className}
         key={letter}
         onClick={() => addGuessedLetter(letter)}
@@ -120,7 +122,7 @@ export default function AssemblyEndgame() {
         </p>
       </header>
 
-      <section className={gameStatusClass}>
+      <section aria-live="polite" role="status" className={gameStatusClass}>
        {renderGameStatus()}    
       </section>
 
@@ -130,6 +132,17 @@ export default function AssemblyEndgame() {
 
       <section className="word">
         {letterElements}
+      </section>
+
+      <section className="sr-only" aria-live="polite" role="status">
+        <p>
+          {currentWord.includes(lastGuessedLetter)?
+          `correct!the letter ${lastGuessedLetter} is in the word`:
+          `sorry,the letter ${lastGuessedLetter} is not in the word`}
+        </p>
+       <p>Current word:{currentWord.split("").map(letter=>
+        guessedLetters.includes(letter)? letter:"blank"
+       ).join(" ")}</p>
       </section>
 
       <section className="keyboard">
