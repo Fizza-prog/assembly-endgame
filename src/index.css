@@ -37,6 +37,7 @@ section.game-status{
   color:#F9F4DA;
   border-radius:4px;
   margin-block:30px;
+  justify-content:center;
 }
 
 section.game-status.won{
@@ -45,6 +46,11 @@ section.game-status.won{
 
 section.game-status.lost{
   background-color:#BA2A2A ;
+}
+
+section.game-status.farewell{
+  background-color:#7AFEA7;
+  border:1px dashed #323232;
 }
 
 section.game-status>h2{
@@ -111,4 +117,11 @@ section.keyboard>button.correct{
 
 section.keyboard>button.wrong{
   background-color:#EC5D49;
+}
+
+section.game-status>p.farewell-msg{
+  background-color:#7A5EA7;
+  border: 1px dashed #323232;
+  font-style:italic;
+  font-weight:400;
 }

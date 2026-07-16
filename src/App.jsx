@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { languages } from "./languages.js";
 import { clsx } from "clsx";
+import { getFarewellText } from "./utils.js";
 
 export default function AssemblyEndgame() {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
 
   const [currentWord, setCurrentWord] = useState("REACT");
   const [guessedLetters, setGuessedLetters] = useState([]);
+  const lastGuessedLetter=guessedLetters[guessedLetters.length-1]
+  const isLastGuessIncorrect=lastGuessedLetter&&!currentWord.includes(lastGuessedLetter);
+
 
   const wrongGuessedCount =
     guessedLetters.filter(letter => !currentWord.includes(letter)).length;
@@ -40,9 +44,9 @@ export default function AssemblyEndgame() {
     const isGameOver=isGameWon||isGameLost;
 
     function renderGameStatus(){
-      if(!isGameOver)
+      if(!isGameOver && isLastGuessIncorrect)
       {
-        return null;
+        return <p className="farewell-message">Bye</p>;
       }
       if(isGameWon)
       {
@@ -53,7 +57,7 @@ export default function AssemblyEndgame() {
          </>
         )
       }
-      else
+      if(isGameLost)
       {
         return(
           <>
@@ -61,6 +65,9 @@ export default function AssemblyEndgame() {
              <p>You Lose!Better start learning Assembly</p>
           </>
         )
+      }
+      else{
+        return null;
       }
     }
 
@@ -99,6 +106,7 @@ export default function AssemblyEndgame() {
   const gameStatusClass=clsx("game-status",{
     won:isGameWon,
     lost:isGameLost,
+    farewell:!isGameOver && isLastGuessIncorrect
   })
 
   return (
