@@ -82,8 +82,19 @@ export default function AssemblyEndgame() {
       </header>
 
       <section className="game-status">
-        <h2>You Win</h2>
-        <p>Well done!</p>
+       {isGameOver?(
+        isGameWon?(
+          <>
+           <h2>You Win</h2>
+           <p>Well done!</p>
+         </>
+        ) :( <>
+             <h2>Game Over!</h2>
+             <p>You Lose!Better start learning Assembly</p>
+             </> )
+                    ) : ( null )
+       }
+         
       </section>
 
       <section className="language-chips">
